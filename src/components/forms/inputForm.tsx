@@ -11,10 +11,11 @@ interface inputFormProps {
     errorMessage?: string,
     isError?: boolean,
     disabled?: boolean,
+    lenght?: number
     onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void,
 }
 
-export default function InputForm({label, type, id, placeholder, isError=false, errorMessage, value, onChange}: inputFormProps) {
+export default function InputForm({label, type, id, placeholder, isError=false, errorMessage, value, onChange, lenght}: inputFormProps) {
   return (
     <div className='w-full md:w-full px-3 mb-6 md:mb-0'>
         <label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' htmlFor={id}>
@@ -25,6 +26,7 @@ export default function InputForm({label, type, id, placeholder, isError=false, 
         type={type}
         placeholder={placeholder} 
         value={value}
+        maxLength={lenght}
         onChange={onChange}
         />
         {isError && <p className='text-red text-xs italic'>{errorMessage}</p>}
